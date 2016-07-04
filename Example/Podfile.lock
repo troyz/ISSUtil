@@ -1,0 +1,16 @@
+PODS:
+  - ISSUtil (0.1.0)
+
+DEPENDENCIES:
+  - ISSUtil (from `../`)
+
+EXTERNAL SOURCES:
+  ISSUtil:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ISSUtil: 4574fb0e6ddae4096d8d45ca82c06504a09a1a92
+
+PODFILE CHECKSUM: f9380c1bae050dd7c1f139aa7fa9e83511659bf2
+
+COCOAPODS: 1.0.1

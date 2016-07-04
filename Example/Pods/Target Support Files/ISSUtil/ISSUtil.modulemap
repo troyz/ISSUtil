@@ -1,0 +1,6 @@
+framework module ISSUtil {
+  umbrella header "ISSUtil-umbrella.h"
+
+  export *
+  module * { export * }
+}

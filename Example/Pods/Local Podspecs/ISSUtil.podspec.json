@@ -1,0 +1,22 @@
+{
+  "name": "ISSUtil",
+  "version": "0.1.0",
+  "summary": "A short description of ISSUtil.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/ISSUtil",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Troy Zhang": "java.koma@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/ISSUtil.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ISSUtil/Classes/**/*"
+}
