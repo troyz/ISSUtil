@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ISSUtil_Example' do
+  pod 'ISSUtil', :path => '../'
+
+  target 'ISSUtil_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
