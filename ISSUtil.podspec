@@ -30,8 +30,24 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'ISSUtil/Classes/**/*'
-  
+  # s.source_files = 'ISSUtil/Classes/**/*'
+  s.source_files = 'ISSUtil/Classes/ISSUtil.h'
+  s.subspec 'Network' do |ss|
+    ss.source_files = 'ISSUtil/Classes/Network/*.{h,m}'
+    ss.public_header_files = 'ISSUtil/Classes/Network/*.h'
+  end
+  s.subspec 'NSDate' do |ss|
+    ss.source_files = 'ISSUtil/Classes/NSDate/*.{h,m}'
+    ss.public_header_files = 'ISSUtil/Classes/NSDate/*.h'
+  end
+  s.subspec 'NSString' do |ss|
+    ss.source_files = 'ISSUtil/Classes/NSString/*.{h,m}'
+    ss.public_header_files = 'ISSUtil/Classes/NSString/*.h'
+  end
+  s.subspec 'Sys' do |ss|
+    ss.source_files = 'ISSUtil/Classes/Sys/*.{h,m}'
+    ss.public_header_files = 'ISSUtil/Classes/Sys/*.h'
+  end
   # s.resource_bundles = {
   #   'ISSUtil' => ['ISSUtil/Assets/*.png']
   # }
