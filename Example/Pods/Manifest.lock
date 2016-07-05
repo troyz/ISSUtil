@@ -1,5 +1,29 @@
 PODS:
-  - ISSUtil (0.1.0)
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - ISSUtil (0.1.0):
+    - AFNetworking (~> 2.6.3)
+    - JSONModel (~> 1.2.0)
+  - JSONModel (1.2.0)
 
 DEPENDENCIES:
   - ISSUtil (from `../`)
@@ -9,7 +33,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  ISSUtil: 4574fb0e6ddae4096d8d45ca82c06504a09a1a92
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  ISSUtil: 893fcd0f6bdab624bd658cd76371749ac2f4f7fb
+  JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
 
 PODFILE CHECKSUM: f9380c1bae050dd7c1f139aa7fa9e83511659bf2
 
