@@ -35,6 +35,9 @@ TODO: Add long description of the pod here.
   s.subspec 'Network' do |ss|
     ss.source_files = 'ISSUtil/Classes/Network/*.{h,m}'
     ss.public_header_files = 'ISSUtil/Classes/Network/*.h'
+    ss.dependency 'ISSUtil/NSDate'
+    ss.dependency 'ISSUtil/NSString'
+    ss.dependency 'ISSUtil/Sys'
   end
   s.subspec 'NSDate' do |ss|
     ss.source_files = 'ISSUtil/Classes/NSDate/*.{h,m}'
