@@ -47,30 +47,30 @@ typedef void (^ISSHttpParameterWrapperBlock)(NSMutableDictionary *dict);
 
 - (void)setParameterWrapper:(ISSHttpParameterWrapperBlock)wrapperBlock;
 
-- (NSOperation *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block;
-- (NSOperation *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block;
-- (NSOperation *) getData:(NSString *)url withBlock:(ISSHttpDataResponseBlock)block;
+- (NSURLSessionDataTask *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSURLSessionDataTask *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block;
+- (NSURLSessionDataTask *) getData:(NSString *)url withBlock:(ISSHttpDataResponseBlock)block;
 
-- (NSOperation *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block;
-- (NSOperation *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block;
-- (NSOperation *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block;
+- (NSURLSessionDataTask *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSURLSessionDataTask *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block;
+- (NSURLSessionDataTask *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block;
 
 /**
  `url`              : the request url
  `kvDict`           : k1=v1&k2=v2&k3=v3
  `jsonDict`         : k1=objectToJsonString(v1)&k2=objectToJsonString(v2)&k3=objectToJsonString(v3)
  */
-- (NSOperation *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block;
-- (NSOperation *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block;
-- (NSOperation *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block;
+- (NSURLSessionDataTask *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSURLSessionDataTask *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block;
+- (NSURLSessionDataTask *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block;
 
-- (NSOperation *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block;
-- (NSOperation *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block;
-- (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block;
+- (NSURLSessionDataTask *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSURLSessionDataTask *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block;
+- (NSURLSessionDataTask *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block;
 
-- (NSOperation *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block;
-- (NSOperation *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block;
-- (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block;
-- (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withBlock:(ISSHttpDataResponseBlock)block;
-- (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStream:(ISSHttpStreamFormModel *)stream withBlock:(ISSHttpDataResponseBlock)block;
+- (NSURLSessionDataTask *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSURLSessionDataTask *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block;
+- (NSURLSessionDataTask *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block;
+- (NSURLSessionDataTask *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withBlock:(ISSHttpDataResponseBlock)block;
+- (NSURLSessionDataTask *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStream:(ISSHttpStreamFormModel *)stream withBlock:(ISSHttpDataResponseBlock)block;
 @end

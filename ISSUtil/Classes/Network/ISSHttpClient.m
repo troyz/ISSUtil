@@ -33,27 +33,27 @@
     paramWrapperBlock = [wrapperBlock copy];
 }
 
-- (NSOperation *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block
+- (NSURLSessionDataTask *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block
 {
     return [self getJSON:url withKVDict:nil withBlock:block];
 }
 
-- (NSOperation *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSURLSessionDataTask *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block
 {
     return [self getJSON:url withKVDict:kvDict withJsonDict:nil withBlock:block];
 }
 
-- (NSOperation *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSURLSessionDataTask *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
 {
     return [self requestJSONWithMethod:@"GET" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withBlock:block];
 }
 
-- (NSOperation *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSURLSessionDataTask *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block
 {
     return [self postJSON:url withKVDict:kvDict withJsonDict:nil withBlock:block];
 }
 
-- (NSOperation *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSURLSessionDataTask *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
 {
     return [self requestJSONWithMethod:@"POST" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withBlock:block];
 }
@@ -64,52 +64,56 @@
  `kvDict`           : k1=v1&k2=v2&k3=v3
  `jsonK`/`jsonV`    : jsonK=objectToJsonString(jsonV)
  */
-- (NSOperation *) requestJSONWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSURLSessionDataTask *) requestJSONWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
 {
     return [self requestWithMethod:method withUrl:url withKVDict:kvDict withJsonDict:jsonDict withStreamList:nil withTextBlock:nil withDataBlock:nil withJsonBlock:block];
 }
 
-- (NSOperation *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block
+- (NSURLSessionDataTask *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block
 {
     return [self getText:url withKVDict:nil withBlock:block];
 }
 
-- (NSOperation *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block
+- (NSURLSessionDataTask *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block
 {
     return [self getText:url withKVDict:kvDict withJsonDict:nil withBlock:block];
 }
 
-- (NSOperation *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block
+- (NSURLSessionDataTask *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block
 {
     return[self requestTextWithMethod:@"GET" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withTextBlock:block withDataBlock:nil];
 }
 
-- (NSOperation *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block
+- (NSURLSessionDataTask *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block
 {
     return [self postText:url withKVDict:kvDict withJsonDict:nil withBlock:block];
 }
 
-- (NSOperation *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block
+- (NSURLSessionDataTask *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block
 {
     return [self requestTextWithMethod:@"POST" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withTextBlock:block withDataBlock:nil];
 }
 
-- (NSOperation *) requestTextWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withTextBlock:(ISSHttpResponseBlock)textBlock withDataBlock:(ISSHttpDataResponseBlock)dataBlock
+- (NSURLSessionDataTask *) requestTextWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withTextBlock:(ISSHttpResponseBlock)textBlock withDataBlock:(ISSHttpDataResponseBlock)dataBlock
 {
     return [self requestTextWithMethod:method withUrl:url withKVDict:kvDict withJsonDict:jsonDict withStreamList:nil withTextBlock:textBlock withDataBlock:dataBlock];
 }
 
-- (NSOperation *) requestTextWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withTextBlock:(ISSHttpResponseBlock)textBlock withDataBlock:(ISSHttpDataResponseBlock)dataBlock
+- (NSURLSessionDataTask *) requestTextWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withTextBlock:(ISSHttpResponseBlock)textBlock withDataBlock:(ISSHttpDataResponseBlock)dataBlock
 {
     return [self requestWithMethod:method withUrl:url withKVDict:kvDict withJsonDict:jsonDict withStreamList:streamList withTextBlock:textBlock withDataBlock:dataBlock withJsonBlock:nil];
 }
-- (NSOperation *) requestWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withTextBlock:(ISSHttpResponseBlock)textBlock withDataBlock:(ISSHttpDataResponseBlock)dataBlock withJsonBlock:(ISSHttpJSONResponseBlock)jsonBlock
+- (NSURLSessionDataTask *) requestWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withTextBlock:(ISSHttpResponseBlock)textBlock withDataBlock:(ISSHttpDataResponseBlock)dataBlock withJsonBlock:(ISSHttpJSONResponseBlock)jsonBlock
 {
     if([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable)
     {
         if(textBlock)
         {
             textBlock(HTTP_ERROR_NETWORK, nil);
+        }
+        else if(jsonBlock)
+        {
+            jsonBlock(HTTP_ERROR_NETWORK, nil);
         }
         else if(dataBlock)
         {
@@ -120,46 +124,15 @@
     NSMutableDictionary *dict = [self organizeKVDict:kvDict withJsonDict:jsonDict];
     dict = dict.count ? dict : nil;
     
-    NSMutableURLRequest *request = nil;
-    if(streamList && streamList.count > 0)
-    {
-        request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:method URLString:url parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
-                   {
-                       for(ISSHttpStreamFormModel *streamItem in streamList)
-                       {
-                           if(!streamItem.data)
-                           {
-                               continue;
-                           }
-                           if([SysUtil emptyString:streamItem.mimeType])
-                           {
-                               [formData appendPartWithFormData:streamItem.data name:streamItem.fieldName];
-                           }
-                           else
-                           {
-                               [formData appendPartWithFileData:streamItem.data name:streamItem.fieldName fileName:[streamItem getFileName] mimeType:streamItem.mimeType];
-                           }
-                       }
-                   } error:nil];
-    }
-    else
-    {
-        NSLog(@"-----------------------------\n%@\n%@\n%@", method, url, dict);
-        request = [[AFHTTPRequestSerializer serializer] requestWithMethod:method URLString:url parameters:dict error:nil];
-        if([@"POST" isEqualToString:[method uppercaseString]])
-        {
-            [request setValue: @"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        }
-    }
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
     // IMPORTANT for isoftstone
     responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"text/xml", nil];
-    operation.responseSerializer = responseSerializer;
+    manager.responseSerializer = responseSerializer;
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id data) {
-        //        NSLog(@"dict: %@", dict);
+    // success block
+    void (^successBlock)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) = ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable data) {
         ISSHttpError errorCode = HTTP_ERROR_NONE;
         if(textBlock)
         {
@@ -181,21 +154,24 @@
         {
             dataBlock(errorCode, data);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    };
+    
+    // failure blcok
+    void (^failureBlock)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) = ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failure: %@", error);
-        if(textBlock || dataBlock)
+        if(textBlock || dataBlock || jsonBlock)
         {
             ISSHttpError errorCode = HTTP_ERROR_SERVER;
             switch (error.code)
             {
                 case NSURLErrorNotConnectedToInternet:
-                errorCode = HTTP_ERROR_NETWORK;
-                break;
+                    errorCode = HTTP_ERROR_NETWORK;
+                    break;
                 case NSURLErrorTimedOut:
-                errorCode = HTTP_ERROR_TIMEOUT;
-                break;
+                    errorCode = HTTP_ERROR_TIMEOUT;
+                    break;
                 default:
-                break;
+                    break;
             }
             if(textBlock)
             {
@@ -210,45 +186,76 @@
                 dataBlock(errorCode, nil);
             }
         }
-    }];
-    [[NSOperationQueue mainQueue] addOperation:operation];
-    return operation;
+    };
+    
+    if(streamList && streamList.count > 0)
+    {
+        return [manager POST:url parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            for(ISSHttpStreamFormModel *streamItem in streamList)
+            {
+                if(!streamItem.data)
+                {
+                    continue;
+                }
+                if([SysUtil emptyString:streamItem.mimeType])
+                {
+                    [formData appendPartWithFormData:streamItem.data name:streamItem.fieldName];
+                }
+                else
+                {
+                    [formData appendPartWithFileData:streamItem.data name:streamItem.fieldName fileName:[streamItem getFileName] mimeType:streamItem.mimeType];
+                }
+            }
+        } progress:nil success:successBlock failure:failureBlock];
+    }
+    else
+    {
+        if([@"POST" isEqualToString:[method uppercaseString]])
+        {
+            [manager.requestSerializer setValue: @"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            return [manager POST:url parameters:dict progress:nil success:successBlock failure:failureBlock];
+        }
+        else
+        {
+            return [manager GET:url parameters:dict progress:nil success:successBlock failure:failureBlock];
+        }
+    }
 }
 
-- (NSOperation *) getData:(NSString *)url withBlock:(ISSHttpDataResponseBlock)block
+- (NSURLSessionDataTask *) getData:(NSString *)url withBlock:(ISSHttpDataResponseBlock)block
 {
     return [self getData:url withKVDict:nil withBlock:block];
 }
-- (NSOperation *) postData:(NSString *)url withBlock:(ISSHttpDataResponseBlock)block
+- (NSURLSessionDataTask *) postData:(NSString *)url withBlock:(ISSHttpDataResponseBlock)block
 {
     return [self postData:url withKVDict:nil withBlock:block];
 }
 
-- (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block
+- (NSURLSessionDataTask *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block
 {
     return [self postData:url withKVDict:kvDict withJsonDict:nil withBlock:block];
 }
-- (NSOperation *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block
+- (NSURLSessionDataTask *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block
 {
     return [self getData:url withKVDict:kvDict withJsonDict:nil withBlock:block];
 }
 
-- (NSOperation *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block
+- (NSURLSessionDataTask *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block
 {
     return [self requestTextWithMethod:@"GET" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withTextBlock:nil withDataBlock:block];
 }
 
-- (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block
+- (NSURLSessionDataTask *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block
 {
     return [self requestTextWithMethod:@"POST" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withTextBlock:nil withDataBlock:block];
 }
 
-- (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withBlock:(ISSHttpDataResponseBlock)block
+- (NSURLSessionDataTask *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withBlock:(ISSHttpDataResponseBlock)block
 {
     return [self requestTextWithMethod:@"POST" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withStreamList:streamList withTextBlock:nil withDataBlock:block];
 }
 
-- (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStream:(ISSHttpStreamFormModel *)stream withBlock:(ISSHttpDataResponseBlock)block
+- (NSURLSessionDataTask *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStream:(ISSHttpStreamFormModel *)stream withBlock:(ISSHttpDataResponseBlock)block
 {
     return [self postData:url withKVDict:kvDict withJsonDict:jsonDict withStreamList:(stream ? [NSArray arrayWithObject:stream] : nil) withBlock:block];
 }
