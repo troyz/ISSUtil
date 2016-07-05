@@ -20,6 +20,8 @@ typedef NS_ENUM(NSInteger, ISSHttpError)
 typedef void (^ISSHttpJSONResponseBlock)(ISSHttpError errorCode, NSDictionary *dict);
 typedef void (^ISSHttpResponseBlock)(ISSHttpError errorCode, NSString *responseText);
 typedef void (^ISSHttpDataResponseBlock)(ISSHttpError errorCode, NSData *data);
+// 发送请求参数之前，你可以修改参数，dict中的key/value都是string
+typedef void (^ISSHttpParameterWrapperBlock)(NSMutableDictionary *dict);
 
 @protocol ISSHttpStreamFormModel <NSObject>
 @end
@@ -41,6 +43,8 @@ typedef void (^ISSHttpDataResponseBlock)(ISSHttpError errorCode, NSData *data);
 @interface ISSHttpClient : NSObject
 
 + (ISSHttpClient *)sharedInstance;
+
+- (void)setParameterWrapper:(ISSHttpParameterWrapperBlock)wrapperBlock;
 
 - (NSOperation *) get:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block;
 - (NSOperation *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block;

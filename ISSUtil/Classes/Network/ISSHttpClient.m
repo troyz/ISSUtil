@@ -2,7 +2,7 @@
 //  ISSHttpClient.m
 //  Travel
 //
-//  Created by ISS110302000166 on 15-4-3.
+//  Created by xdzhangm on 15-4-3.
 //  Copyright (c) 2015年 isoftstone. All rights reserved.
 //
 
@@ -14,7 +14,9 @@
 #import "SysUtil.h"
 
 @implementation ISSHttpClient
-
+{
+    ISSHttpParameterWrapperBlock paramWrapperBlock;
+}
 
 + (ISSHttpClient *)sharedInstance
 {
@@ -24,6 +26,11 @@
         _sharedClient = [[ISSHttpClient alloc] init];
     });
     return _sharedClient;
+}
+
+- (void)setParameterWrapper:(ISSHttpParameterWrapperBlock)wrapperBlock
+{
+    paramWrapperBlock = [wrapperBlock copy];
 }
 
 - (NSOperation *) get:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block
@@ -328,15 +335,19 @@
                 if(![SysUtil emptyString:json])
                 {
                     // EDIT BY xdzhangm, 2016/05/18
-                    if([@"content" isEqualToString:key])
-                    {
-                        json = [json base64String];
-                    }
+//                    if([@"content" isEqualToString:key])
+//                    {
+//                        json = [json base64String];
+//                    }
                     // END EDIT
                     [dict setObject:json forKey:key];
                 }
             }
         }
+    }
+    if(paramWrapperBlock)
+    {
+        paramWrapperBlock(dict);
     }
     return dict;
 }
@@ -355,7 +366,7 @@
     {
         _fieldName = fieldName;
         _data = data;
-        _mimeType = mimeType;
+        _mimeType = [mimeType lowercaseString];
     }
     return self;
 }
@@ -369,6 +380,9 @@
     if(![SysUtil emptyString:_mimeType])
     {
         NSString *name = [NSDate stringFromDate:[NSDate new] withDateFormat:@"yyyyMMddhhmmss"];
+        static NSInteger count = 0;
+        count++;
+        name = [NSString stringWithFormat:@"%@%zd", name, count];
         if([_mimeType rangeOfString:@"png"].location != NSNotFound)
         {
             return [NSString stringWithFormat:@"%@.png", name];

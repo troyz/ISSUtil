@@ -42,7 +42,7 @@
 		60D25156D5520EE54B11E11B9F74B847 /* NSMutableAttributedString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CC1A515644ACDDB2721FFCAAC02A20 /* NSMutableAttributedString+HTML.m */; };
 		62FAF11E0236B7A2F3A74B71DDE37C1F /* ISSHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F97ECFE7D6A844B650B559199D2F7E8 /* ISSHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6455E3E7A37FB9EA86B2F289DBB73B7D /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 946B01C8BB2DCEC82579FA46D774FA39 /* JSONModel+networking.m */; };
-		6517D3E11D2B4185008FE516 /* ISSUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6517D3E01D2B4185008FE516 /* ISSUtil.h */; };
+		6517D3E11D2B4185008FE516 /* ISSUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6517D3E01D2B4185008FE516 /* ISSUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		668628A6E1B876F3938C501F8A7A382A /* Pods-ISSUtil_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B3372FC0DC519A41101898ECDFEBCECD /* Pods-ISSUtil_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66EBAB0A1798DF65306CF7F2DBAFDBBD /* ISSUtil-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 51AF8450514E38EC45777DF9CEFBF32A /* ISSUtil-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68F25493DF29423FEA798D2247A6C918 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D0B3BB3559161958A6C1C7975DEF73 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
