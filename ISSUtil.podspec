@@ -34,24 +34,24 @@ TODO: Add long description of the pod here.
   s.source_files = 'ISSUtil/Classes/ISSUtil.h'
 
   s.subspec 'Utils' do |ss|
-    s.subspec 'NSDate' do |ss|
-      ss.source_files = 'ISSUtil/Classes/Utils/NSDate/*.{h,m}'
-      ss.public_header_files = 'ISSUtil/Classes/Utils/NSDate/*.h'
+    ss.subspec 'NSDate' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Utils/NSDate/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Utils/NSDate/*.h'
     end
-    s.subspec 'NSString' do |ss|
-      ss.source_files = 'ISSUtil/Classes/Utils/NSString/*.{h,m}'
-      ss.public_header_files = 'ISSUtil/Classes/Utils/NSString/*.h'
+    ss.subspec 'NSString' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Utils/NSString/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Utils/NSString/*.h'
     end
-    s.subspec 'Sys' do |ss|
-      ss.source_files = 'ISSUtil/Classes/Utils/Sys/*.{h,m}'
-      ss.public_header_files = 'ISSUtil/Classes/Utils/Sys/*.h'
+    ss.subspec 'Sys' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Utils/Sys/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Utils/Sys/*.h'
     end
-    s.subspec 'Network' do |ss|
-      ss.source_files = 'ISSUtil/Classes/Utils/Network/*.{h,m}'
-      ss.public_header_files = 'ISSUtil/Classes/Utils/Network/*.h'
-      ss.dependency 'Utils/NSDate'
-      ss.dependency 'Utils/NSString'
-      ss.dependency 'Utils/Sys'
+    ss.subspec 'Network' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Utils/Network/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Utils/Network/*.h'
+      sss.dependency 'ISSUtil/Utils/NSDate'
+      sss.dependency 'ISSUtil/Utils/NSString'
+      sss.dependency 'ISSUtil/Utils/Sys'
     end
   end
 
