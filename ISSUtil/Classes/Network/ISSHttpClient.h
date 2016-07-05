@@ -17,7 +17,8 @@ typedef NS_ENUM(NSInteger, ISSHttpError)
     HTTP_ERROR_DATA_PARSE           = 4     // 数据解析异常
 };
 
-typedef void (^ISSHttpJSONResponseBlock)(ISSHttpError errorCode, NSDictionary *dict);
+// jsonData is NSArray or NSDictionary
+typedef void (^ISSHttpJSONResponseBlock)(ISSHttpError errorCode, id jsonData);
 typedef void (^ISSHttpResponseBlock)(ISSHttpError errorCode, NSString *responseText);
 typedef void (^ISSHttpDataResponseBlock)(ISSHttpError errorCode, NSData *data);
 // 发送请求参数之前，你可以修改参数，dict中的key/value都是string
@@ -46,11 +47,11 @@ typedef void (^ISSHttpParameterWrapperBlock)(NSMutableDictionary *dict);
 
 - (void)setParameterWrapper:(ISSHttpParameterWrapperBlock)wrapperBlock;
 
-- (NSOperation *) get:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSOperation *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block;
 - (NSOperation *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block;
 - (NSOperation *) getData:(NSString *)url withBlock:(ISSHttpDataResponseBlock)block;
 
-- (NSOperation *) get:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSOperation *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block;
 - (NSOperation *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block;
 - (NSOperation *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block;
 
@@ -59,15 +60,15 @@ typedef void (^ISSHttpParameterWrapperBlock)(NSMutableDictionary *dict);
  `kvDict`           : k1=v1&k2=v2&k3=v3
  `jsonDict`         : k1=objectToJsonString(v1)&k2=objectToJsonString(v2)&k3=objectToJsonString(v3)
  */
-- (NSOperation *) get:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSOperation *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block;
 - (NSOperation *) getText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block;
 - (NSOperation *) getData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block;
 
-- (NSOperation *) post:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSOperation *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block;
 - (NSOperation *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpResponseBlock)block;
 - (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpDataResponseBlock)block;
 
-- (NSOperation *) post:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block;
+- (NSOperation *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block;
 - (NSOperation *) postText:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpResponseBlock)block;
 - (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpDataResponseBlock)block;
 - (NSOperation *) postData:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withBlock:(ISSHttpDataResponseBlock)block;

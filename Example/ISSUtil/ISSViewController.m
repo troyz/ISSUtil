@@ -33,8 +33,18 @@
     }];
     NSString *url = @"http://223.223.183.103:8098/datacent/external/execute.jhtml?system=CT&serviceName=DC_USERCENTER&serviceKey=rYzcn1iQWiCz9pCtJ68Eng==";
     NSDictionary *dict = @{@"content": @{@"type": @(10), @"user": @{@"PhoneNumber": @"18080079668", @"Pwd": @"111111"}}};
-    [[ISSHttpClient sharedInstance] postText:url withKVDict:nil withJsonDict:dict withBlock:^(ISSHttpError errorCode, NSString *responseText) {
-        NSLog(@"response: %@", responseText);
+//    [[ISSHttpClient sharedInstance] postText:url withKVDict:nil withJsonDict:dict withBlock:^(ISSHttpError errorCode, NSString *responseText) {
+//        NSLog(@"response: %@", responseText);
+//    }];
+//    [[ISSHttpClient sharedInstance] postJSON:url withKVDict:nil withJsonDict:dict withBlock:^(ISSHttpError errorCode, id jsonData) {
+//        NSLog(@"type, %@", [jsonData class]);
+//        NSLog(@"jsonData %@", jsonData);
+//    }];
+    
+    url = @"http://api.map.baidu.com/telematics/v3/weather?location=%E6%AD%A6%E6%B1%89&output=json&ak=GndkiDfUjGj8z5l6difgcZiK";
+    [[ISSHttpClient sharedInstance] getJSON:url withBlock:^(ISSHttpError errorCode, id jsonData) {
+        NSLog(@"type, %@", [jsonData class]);
+        NSLog(@"jsonData %@", jsonData);
     }];
 }
 

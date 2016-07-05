@@ -33,29 +33,29 @@
     paramWrapperBlock = [wrapperBlock copy];
 }
 
-- (NSOperation *) get:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block
+- (NSOperation *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block
 {
-    return [self get:url withKVDict:nil withBlock:block];
+    return [self getJSON:url withKVDict:nil withBlock:block];
 }
 
-- (NSOperation *) get:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSOperation *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block
 {
-    return [self get:url withKVDict:kvDict withJsonDict:nil withBlock:block];
+    return [self getJSON:url withKVDict:kvDict withJsonDict:nil withBlock:block];
 }
 
-- (NSOperation *) get:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSOperation *) getJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
 {
-    return [self requestWithMethod:@"GET" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withBlock:block];
+    return [self requestJSONWithMethod:@"GET" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withBlock:block];
 }
 
-- (NSOperation *) post:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSOperation *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withBlock:(ISSHttpJSONResponseBlock)block
 {
-    return [self post:url withKVDict:kvDict withJsonDict:nil withBlock:block];
+    return [self postJSON:url withKVDict:kvDict withJsonDict:nil withBlock:block];
 }
 
-- (NSOperation *) post:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSOperation *) postJSON:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
 {
-    return [self requestWithMethod:@"POST" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withBlock:block];
+    return [self requestJSONWithMethod:@"POST" withUrl:url withKVDict:kvDict withJsonDict:jsonDict withBlock:block];
 }
 
 /**
@@ -64,63 +64,9 @@
  `kvDict`           : k1=v1&k2=v2&k3=v3
  `jsonK`/`jsonV`    : jsonK=objectToJsonString(jsonV)
  */
-- (NSOperation *) requestWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
+- (NSOperation *) requestJSONWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withBlock:(ISSHttpJSONResponseBlock)block
 {
-    if([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable)
-    {
-        if(block)
-        {
-            block(HTTP_ERROR_NETWORK, nil);
-        }
-        return nil;
-    }
-    NSMutableDictionary *dict = [self organizeKVDict:kvDict withJsonDict:jsonDict];
-    // NSLog(@"-----------------------------\n%@\n%@\n%@", method, url, dict);
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:method URLString:url parameters:dict error:nil];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
-    // IMPORTANT for isoftstone
-    responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"text/xml", nil];
-    
-    operation.responseSerializer = responseSerializer;
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id JSON) {
-        //        NSLog(@"dict: %@", dict);
-        NSDictionary *dict = nil;
-        ISSHttpError errorCode = HTTP_ERROR_NONE;
-        if([JSON isKindOfClass:[NSDictionary class]])
-        {
-            dict = JSON;
-        }
-        else if([JSON isKindOfClass:[NSArray class]] && ((NSArray *)JSON).count > 0)
-        {
-            dict = [((NSArray *)JSON) objectAtIndex:0];
-        }
-        if(block)
-        {
-            block(errorCode, dict);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failure: %@", error);
-        if(block)
-        {
-            ISSHttpError errorCode = HTTP_ERROR_SERVER;
-            switch (error.code)
-            {
-                case NSURLErrorNotConnectedToInternet:
-                errorCode = HTTP_ERROR_NETWORK;
-                break;
-                case NSURLErrorTimedOut:
-                errorCode = HTTP_ERROR_TIMEOUT;
-                break;
-                default:
-                break;
-            }
-            block(errorCode, nil);
-        }
-    }];
-    [[NSOperationQueue mainQueue] addOperation:operation];
-    return operation;
+    return [self requestWithMethod:method withUrl:url withKVDict:kvDict withJsonDict:jsonDict withStreamList:nil withTextBlock:nil withDataBlock:nil withJsonBlock:block];
 }
 
 - (NSOperation *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block
@@ -154,6 +100,10 @@
 }
 
 - (NSOperation *) requestTextWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withTextBlock:(ISSHttpResponseBlock)textBlock withDataBlock:(ISSHttpDataResponseBlock)dataBlock
+{
+    return [self requestWithMethod:method withUrl:url withKVDict:kvDict withJsonDict:jsonDict withStreamList:streamList withTextBlock:textBlock withDataBlock:dataBlock withJsonBlock:nil];
+}
+- (NSOperation *) requestWithMethod:(NSString *)method withUrl:(NSString *)url withKVDict:(NSDictionary *)kvDict withJsonDict:(NSDictionary *)jsonDict withStreamList:(NSArray *)streamList withTextBlock:(ISSHttpResponseBlock)textBlock withDataBlock:(ISSHttpDataResponseBlock)dataBlock withJsonBlock:(ISSHttpJSONResponseBlock)jsonBlock
 {
     if([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable)
     {
@@ -216,6 +166,17 @@
             NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             textBlock(errorCode, result);
         }
+        else if(jsonBlock)
+        {
+            NSError* error;
+            id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            if(error)
+            {
+                errorCode = HTTP_ERROR_DATA_PARSE;
+                jsonData = nil;
+            }
+            jsonBlock(errorCode, jsonData);
+        }
         else if(dataBlock)
         {
             dataBlock(errorCode, data);
@@ -239,6 +200,10 @@
             if(textBlock)
             {
                 textBlock(errorCode, nil);
+            }
+            else if(jsonBlock)
+            {
+                jsonBlock(errorCode, nil);
             }
             else
             {
