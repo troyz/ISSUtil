@@ -91,4 +91,5 @@ TODO: Add long description of the pod here.
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'AFNetworking', '~> 3.1.0'
   s.dependency 'JSONModel', '~> 1.2.0'
+  s.dependency 'MBProgressHUD', '~> 0.9.2'
 end
