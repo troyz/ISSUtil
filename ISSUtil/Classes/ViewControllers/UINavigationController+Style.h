@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UINavigationController (Style)
-- (void)setupStyle;
+- (void)setupStyleWithBarColor:(UIColor *)barColor;
 @end

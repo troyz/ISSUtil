@@ -31,9 +31,7 @@ typedef NS_ENUM(NSInteger, HUBAferDelay)
  NO: there some error.
  */
 - (BOOL) checkHttpError:(ISSHttpError) errorCode;
-- (void) initBackButton;
 - (void) backToPre;
-- (void) hideBackButton;
 - (void) addFirstView;
 - (void)showAlert:(NSString *)msg;
 
@@ -44,14 +42,6 @@ typedef NS_ENUM(NSInteger, HUBAferDelay)
 - (void) isDataNullTarget:(id)target action:(SEL)action;
 - (void) isDataNullTarget:(id)target action:(SEL)action title:(NSString*)title;
 - (void) isDataNotNull;
-// 到登陆页面
-- (BOOL)checkIfNeedLogin;
-- (BOOL)checkIfNeedLogin:(BOOL)isUpdateReqeust;
-- (void)toLoginPage;
-// 分享
-- (void) shareItems:(NSArray *)items;
-// 设置导航栏文字
-- (void)setNavigationTitle:(NSString *)title;
 - (void)showWebpage:(NSString *)url;
 - (void)showWebpage:(NSString *)url withTitle:(NSString *)title;
 //拨打电话(代理在自身页面实现)

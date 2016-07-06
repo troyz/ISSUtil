@@ -83,6 +83,10 @@ TODO: Add long description of the pod here.
     ss.source_files = 'ISSUtil/Classes/Models/*.{h,m}'
     ss.public_header_files = 'ISSUtil/Classes/Models/*.h'
   end
+  s.subspec 'ViewControllers' do |ss|
+    ss.source_files = 'ISSUtil/Classes/ViewControllers/*.{h,m}'
+    ss.public_header_files = 'ISSUtil/Classes/ViewControllers/*.h'
+  end
   # s.resource_bundles = {
   #   'ISSUtil' => ['ISSUtil/Assets/*.png']
   # }
@@ -92,4 +96,5 @@ TODO: Add long description of the pod here.
   s.dependency 'AFNetworking', '~> 3.1.0'
   s.dependency 'JSONModel', '~> 1.2.0'
   s.dependency 'MBProgressHUD', '~> 0.9.2'
+  s.dependency 'NJKWebViewProgress', '~> 0.2.3'
 end

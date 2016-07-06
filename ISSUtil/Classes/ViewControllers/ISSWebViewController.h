@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ISSViewController.h"
 
-@interface ISSWebViewController : ISSViewController
+@interface ISSWebViewController : UIViewController
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, assign) BOOL showToolbar;
 - (void)reloadWebPage;

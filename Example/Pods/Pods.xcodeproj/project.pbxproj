@@ -81,8 +81,6 @@
 		657458821D2CA02900536A0F /* UITextView+LengthLimit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6574587A1D2CA02500536A0F /* UITextView+LengthLimit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		657458831D2CA02900536A0F /* UITextView+LengthLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574587B1D2CA02500536A0F /* UITextView+LengthLimit.m */; };
 		657458891D2CB03A00536A0F /* ISSConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 657458861D2CA54C00536A0F /* ISSConstant.h */; };
-		657458DE1D2D02A200536A0F /* ISSViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 657458CE1D2D029D00536A0F /* ISSViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		657458DF1D2D02A200536A0F /* ISSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657458CF1D2D029D00536A0F /* ISSViewController.m */; };
 		657458E01D2D02A200536A0F /* ISSWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 657458D01D2D029D00536A0F /* ISSWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		657458E11D2D02A200536A0F /* ISSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657458D11D2D029D00536A0F /* ISSWebViewController.m */; };
 		657458E21D2D02A200536A0F /* UINavigationController+Style.h in Headers */ = {isa = PBXBuildFile; fileRef = 657458D21D2D029D00536A0F /* UINavigationController+Style.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -246,8 +244,6 @@
 		6574587A1D2CA02500536A0F /* UITextView+LengthLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+LengthLimit.h"; sourceTree = "<group>"; };
 		6574587B1D2CA02500536A0F /* UITextView+LengthLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+LengthLimit.m"; sourceTree = "<group>"; };
 		657458861D2CA54C00536A0F /* ISSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSConstant.h; sourceTree = "<group>"; };
-		657458CE1D2D029D00536A0F /* ISSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSViewController.h; sourceTree = "<group>"; };
-		657458CF1D2D029D00536A0F /* ISSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSViewController.m; sourceTree = "<group>"; };
 		657458D01D2D029D00536A0F /* ISSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSWebViewController.h; sourceTree = "<group>"; };
 		657458D11D2D029D00536A0F /* ISSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSWebViewController.m; sourceTree = "<group>"; };
 		657458D21D2D029D00536A0F /* UINavigationController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Style.h"; sourceTree = "<group>"; };
@@ -632,8 +628,6 @@
 		657458CD1D2D029D00536A0F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				657458CE1D2D029D00536A0F /* ISSViewController.h */,
-				657458CF1D2D029D00536A0F /* ISSViewController.m */,
 				657458D01D2D029D00536A0F /* ISSWebViewController.h */,
 				657458D11D2D029D00536A0F /* ISSWebViewController.m */,
 				657458D21D2D029D00536A0F /* UINavigationController+Style.h */,
@@ -890,7 +884,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				657458821D2CA02900536A0F /* UITextView+LengthLimit.h in Headers */,
-				657458DE1D2D02A200536A0F /* ISSViewController.h in Headers */,
 				657458751D2C9FFA00536A0F /* UIButton+ImageTextVerticalAlign.h in Headers */,
 				6574585B1D2C9F7A00536A0F /* UIImageView+Title.h in Headers */,
 				6574586C1D2C9FC800536A0F /* UIImage+RTTint.h in Headers */,
@@ -1108,7 +1101,6 @@
 				657458E11D2D02A200536A0F /* ISSWebViewController.m in Sources */,
 				657458E51D2D02A200536A0F /* UIViewController+ISSViewController.m in Sources */,
 				6517D4411D2BB46D008FE516 /* NSString+Extension.m in Sources */,
-				657458DF1D2D02A200536A0F /* ISSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

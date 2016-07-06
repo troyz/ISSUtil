@@ -9,11 +9,7 @@
 #import "ISSWebViewController.h"
 #import "NJKWebViewProgressView.h"
 #import "NJKWebViewProgress.h"
-
-#define kScreenWidth                    [[UIScreen mainScreen] bounds].size.width
-#define kScreenHeight                   [[UIScreen mainScreen] bounds].size.height
-#define RGBAColor(r,g,b,a)              [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
-#define RGBColor(r,g,b)                 [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(1)]
+#import "ISSConstant.h"
 
 @interface ISSWebViewController ()<UIWebViewDelegate, NJKWebViewProgressDelegate>
 {

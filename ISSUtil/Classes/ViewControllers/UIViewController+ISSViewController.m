@@ -11,6 +11,8 @@
 #import "UIImage+RTTint.h"
 #import "ISSWebViewController.h"
 #import "UINavigationController+Style.h"
+#import "ISSConstant.h"
+#import "SysUtil.h"
 
 #define HUB_VIEW_TAG            -10
 
@@ -37,10 +39,6 @@ static char viewInPagerKey;
 - (void)swizzling_viewWillAppear:(BOOL)animated
 {
     [self swizzling_viewWillAppear:animated];
-    if(![self isRootViewController])
-    {
-        [self initBackButton];
-    }
 }
 
 - (void)swizzling_viewDidAppear:(BOOL)animated
@@ -89,7 +87,7 @@ static char viewInPagerKey;
     else
     {
         void (^theBlock)(void) = ^(void){[MBProgressHUD hideHUDForView:pView animated:NO];};
-        runCommonBlockInMainThread(theBlock);
+        dispatch_main_async_safe(theBlock);
     }
 }
 
@@ -113,50 +111,6 @@ static char viewInPagerKey;
             break;
     }
     return NO;
-}
-
-- (void) initBackButton
-{
-    NSString *imageName = @"back.png";
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 0, 32, 32)];
-    [leftBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-    [leftBtn setImage:[[UIImage imageNamed:imageName] rt_tintedImageWithColor:kMenuHilightColor] forState:UIControlStateHighlighted];
-    [leftBtn addTarget:self action:@selector(backToPre) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    [space setWidth:-5];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    [leftItem setTintColor:[UIColor whiteColor]];
-    if (IS_IOS7_OR_LATER)
-    {
-        self.navigationItem.leftBarButtonItems = @[space, leftItem];
-    }
-    else
-    {
-        self.navigationItem.leftBarButtonItem = leftItem;
-    }
-}
-
-- (void) hideBackButton
-{
-    NSString *imageName = @"";
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 0, 32, 32)];
-    [leftBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-    
-    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    [space setWidth:-5];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    [leftItem setTintColor:[UIColor whiteColor]];
-    if (IS_IOS7_OR_LATER)
-    {
-        self.navigationItem.leftBarButtonItems = @[space, leftItem];
-    }
-    else
-    {
-        self.navigationItem.leftBarButtonItem = leftItem;
-    }
 }
 
 - (void) backToPre
@@ -295,75 +249,6 @@ static char viewInPagerKey;
     nullDataView.hidden = YES;
 }
 
-- (void) shareItems:(NSArray *)items
-{
-    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:@[[[WeixinSessionActivity alloc] init], [[WeixinTimelineActivity alloc] init]]];
-    [self presentViewController:activityView animated:YES completion:nil];
-}
-
-- (BOOL)checkIfNeedLogin
-{
-    return [self checkIfNeedLogin:YES];
-}
-
-- (BOOL)checkIfNeedLogin:(BOOL)isUpdateReqeust
-{
-    if([SysUtil emptyString:USER_ID])
-    {
-        [self toLoginPage];
-        return YES;
-    }
-    if(isUpdateReqeust && [APP_DELEGATE().userInfo isGuester])
-    {
-        [self showHubMsg:@"游客只有浏览权限."];
-        return YES;
-    }
-    return NO;
-}
-
-- (void)toLoginPage
-{
-    NSLog(@"to login page");
-}
-
-- (void)setNavigationTitle:(NSString *)title
-{
-//    NSArray *familyNames =[[NSArray alloc]initWithArray:[UIFont familyNames]];
-//    NSArray *fontNames;
-//    NSInteger indFamily, indFont;
-//    for(indFamily=0;indFamily<[familyNames count];++indFamily)
-//        
-//    {
-//        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
-//        fontNames =[[NSArray alloc]initWithArray:[UIFont fontNamesForFamilyName:[familyNames objectAtIndex:indFamily]]];
-//        
-//        for(indFont=0; indFont<[fontNames count]; ++indFont)
-//            
-//        {
-//            NSLog(@"Font name: %@",[fontNames objectAtIndex:indFont]);
-//        }
-//    }
-    
-    // 字体倾斜10度
-//    CGAffineTransform matrix =  CGAffineTransformMake(1, 0, tanf(10 * (CGFloat)M_PI / 180), 1, 0, 0);
-//    UIFontDescriptor *bodyFontDesciptor = [UIFontDescriptor fontDescriptorWithName:[UIFont fontWithName:@"MFLangQian_Noncommercial-Regular" size:17.0].fontName matrix:matrix];
-//    UIFont *font = [UIFont fontWithDescriptor:bodyFontDesciptor size:17.0];
-    
-    UILabel *titleView = [[UILabel alloc] init];
-    // MF LangQian (Noncommercial)
-    // MFLangQian_Noncommercial-Regular
-    titleView.font = kAppFontWithSize(17.0);//font;//[UIFont fontWithName:@"MFLangQian_Noncommercial-Regular" size:18.0];
-    titleView.text = title;
-    titleView.textColor = kColor_Pager;
-    titleView.textAlignment = NSTextAlignmentCenter;
-    CGSize size = [UITool sizeWithText:titleView.text withMaxSize:CGSizeMake(MAXFLOAT, MAXFLOAT) withFont:titleView.font lineBreakMode:NSLineBreakByTruncatingTail];
-    size.width += 10;
-    
-    titleView.frame = CGRectMake((kScreenWidth - size.width) / 2.0, (44 - size.height) / 2.0, size.width, size.height);
-    
-    self.navigationItem.titleView = titleView;
-}
-
 - (void)showWebpage:(NSString *)url
 {
     [self showWebpage:url withTitle:nil];
@@ -379,7 +264,7 @@ static char viewInPagerKey;
     webViewController.url = url;
     if(![SysUtil emptyString:title])
     {
-        [webViewController setNavigationTitle:title];
+        webViewController.navigationItem.title = title;
     }
     webViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:webViewController animated:YES];
