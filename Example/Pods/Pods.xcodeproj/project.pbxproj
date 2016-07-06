@@ -80,7 +80,7 @@
 		657458811D2CA02900536A0F /* UITextField+LengthLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 657458791D2CA02500536A0F /* UITextField+LengthLimit.m */; };
 		657458821D2CA02900536A0F /* UITextView+LengthLimit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6574587A1D2CA02500536A0F /* UITextView+LengthLimit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		657458831D2CA02900536A0F /* UITextView+LengthLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574587B1D2CA02500536A0F /* UITextView+LengthLimit.m */; };
-		657458881D2CA84000536A0F /* ISSConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 657458861D2CA54C00536A0F /* ISSConstant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		657458891D2CB03A00536A0F /* ISSConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 657458861D2CA54C00536A0F /* ISSConstant.h */; };
 		659960F7E28E993E08CCC1E8A383E710 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = A2115805DF45C7AF6EA47CFDCB51C2A5 /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		668628A6E1B876F3938C501F8A7A382A /* Pods-ISSUtil_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B3372FC0DC519A41101898ECDFEBCECD /* Pods-ISSUtil_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68152D921ABF6A423C192C04FDF94F0F /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 301FD67DBE2DD626CE41B354722A429F /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -865,7 +865,7 @@
 				6574586A1D2C9FC800536A0F /* UIImage+Blurry.h in Headers */,
 				6517D43B1D2BB465008FE516 /* NSString+Addtions.h in Headers */,
 				657458541D2C9EE000536A0F /* ISSJSONModel.h in Headers */,
-				657458881D2CA84000536A0F /* ISSConstant.h in Headers */,
+				657458891D2CB03A00536A0F /* ISSConstant.h in Headers */,
 				6517D43E1D2BB465008FE516 /* NSString+URL.h in Headers */,
 				6517D4441D2BB475008FE516 /* SysUtil.h in Headers */,
 				6517D43D1D2BB465008FE516 /* NSString+ISSReplace.h in Headers */,
