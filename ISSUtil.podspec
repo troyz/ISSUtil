@@ -31,7 +31,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
   # s.source_files = 'ISSUtil/Classes/**/*'
-  s.source_files = 'ISSUtil/Classes/ISSUtil.h'
+  s.source_files = 'ISSUtil/Classes/*.h'
 
   s.subspec 'Utils' do |ss|
     ss.subspec 'Date' do |sss|
@@ -54,7 +54,35 @@ TODO: Add long description of the pod here.
       sss.dependency 'ISSUtil/Utils/Sys'
     end
   end
-
+  s.subspec 'Views' do |ss|
+    ss.subspec 'Cells' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Views/Cells/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Views/Cells/*.h'
+    end
+    ss.subspec 'Input' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Views/Input/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Views/Input/*.h'
+      sss.dependency 'ISSUtil/Utils/Sys'
+    end
+    ss.subspec 'Button' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Views/UIButton/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Views/UIButton/*.h'
+      sss.dependency 'ISSUtil/Utils/Sys'
+    end
+    ss.subspec 'Image' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Views/UIImage/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Views/UIImage/*.h'
+    end
+    ss.subspec 'ImageView' do |sss|
+      sss.source_files = 'ISSUtil/Classes/Views/UIImageView/*.{h,m}'
+      sss.public_header_files = 'ISSUtil/Classes/Views/UIImageView/*.h'
+      sss.dependency 'ISSUtil/Utils/Sys'
+    end
+  end
+  s.subspec 'Models' do |ss|
+    ss.source_files = 'ISSUtil/Classes/Models/*.{h,m}'
+    ss.public_header_files = 'ISSUtil/Classes/Models/*.h'
+  end
   # s.resource_bundles = {
   #   'ISSUtil' => ['ISSUtil/Assets/*.png']
   # }
