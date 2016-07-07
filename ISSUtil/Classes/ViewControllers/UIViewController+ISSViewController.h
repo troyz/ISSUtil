@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, HUBAferDelay)
  NO: there some error.
  */
 - (BOOL) checkHttpError:(ISSHttpError) errorCode;
+- (void) initBackButton:(NSString *)backImageName;
+- (void) initBackButton;
+- (void) hideBackButton;
 - (void) backToPre;
 - (void) addFirstView;
 - (void)showAlert:(NSString *)msg;

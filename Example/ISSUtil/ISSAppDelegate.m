@@ -7,16 +7,39 @@
 //
 
 #import "ISSAppDelegate.h"
+#import "ISSUtil.h"
 
 @implementation ISSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UINavigationController *navController = [[UINavigationController alloc] init];
-//    navController setupna
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view.backgroundColor = [UIColor whiteColor];
+    vc.navigationItem.title = @"First Page";
+    
+    UIButton *btnView = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnView setTitle:@"下一页面" forState:UIControlStateNormal];
+    btnView.frame = CGRectMake(50, kOffSet + 50, 100, 40);
+    btnView.titleLabel.textColor = [UIColor blackColor];
+    btnView.backgroundColor = [UIColor orangeColor];
+    [btnView addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [vc.view addSubview:btnView];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    [navController setupStyleWithBarColor:RGBColor(0xff, 0x66, 0x00)];
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)buttonTapped
+{
+    UINavigationController *navController = self.window.rootViewController;
+    ISSWebViewController *vc = [[ISSWebViewController alloc] init];
+    vc.url = @"http://www.baidu.com/";
+    [vc initBackButton];
+    [navController pushViewController:vc animated:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

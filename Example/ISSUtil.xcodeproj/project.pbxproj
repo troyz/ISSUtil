@@ -20,6 +20,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		65E6180C1D2E013E00184ED5 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E6180B1D2E013E00184ED5 /* back@2x.png */; };
 		7DA9922E8298E0611D6D8C08 /* Pods_ISSUtil_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8E785060AB61362370A00B /* Pods_ISSUtil_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		C1A18FD4DF4E245BED58FC1E /* Pods_ISSUtil_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC3A81F886134D49FAD5E84 /* Pods_ISSUtil_Example.framework */; };
@@ -60,6 +61,7 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		65E6180B1D2E013E00184ED5 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9C7062D3FAE201B57926C460 /* Pods-ISSUtil_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISSUtil_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISSUtil_Example/Pods-ISSUtil_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B86985DE88DFD6168909329A /* Pods-ISSUtil_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISSUtil_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISSUtil_Example/Pods-ISSUtil_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		6003F593195388D20070C39A /* Example for ISSUtil */ = {
 			isa = PBXGroup;
 			children = (
+				65E6180A1D2E013600184ED5 /* Images */,
 				6003F59C195388D20070C39A /* ISSAppDelegate.h */,
 				6003F59D195388D20070C39A /* ISSAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -180,6 +183,14 @@
 				30C39F4C8809773728FF33B4 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		65E6180A1D2E013600184ED5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				65E6180B1D2E013E00184ED5 /* back@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		A0570A7196F1E5B30B5FAB0F /* Pods */ = {
@@ -277,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				65E6180C1D2E013E00184ED5 /* back@2x.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);

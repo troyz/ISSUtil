@@ -123,7 +123,15 @@
     {
       "name": "ViewControllers",
       "source_files": "ISSUtil/Classes/ViewControllers/*.{h,m}",
-      "public_header_files": "ISSUtil/Classes/ViewControllers/*.h"
+      "public_header_files": "ISSUtil/Classes/ViewControllers/*.h",
+      "dependencies": {
+        "ISSUtil/Utils/Network": [
+
+        ],
+        "ISSUtil/Views/Image": [
+
+        ]
+      }
     }
   ]
 }

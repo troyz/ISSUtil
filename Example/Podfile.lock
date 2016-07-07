@@ -62,6 +62,8 @@ PODS:
     - NJKWebViewProgress (~> 0.2.3)
   - ISSUtil/ViewControllers (0.1.1):
     - AFNetworking (~> 3.1.0)
+    - ISSUtil/Utils/Network
+    - ISSUtil/Views/Image
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
@@ -120,7 +122,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  ISSUtil: f0e5c7f91dd9bd5d92d5eff840b9a651872ff9d7
+  ISSUtil: 4ff4b13918e77d8fd36517a3030e4cf1cdceef47
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d

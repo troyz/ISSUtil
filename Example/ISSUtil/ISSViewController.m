@@ -7,7 +7,7 @@
 //
 
 #import "ISSViewController.h"
-#import <ISSUtil/ISSUtil.h>
+#import "ISSUtil.h"
 
 @interface ISSViewController ()
 

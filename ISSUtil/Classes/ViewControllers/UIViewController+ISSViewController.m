@@ -363,4 +363,33 @@ static char hideNavBarKey;
     NSString *str = objc_getAssociatedObject(self, &hideNavBarKey);
     return ![SysUtil emptyString:str] && [str integerValue];
 }
+
+- (void) initBackButton
+{
+    [self initBackButton:@"back.png"];
+}
+
+- (void) initBackButton:(NSString *)backImageName
+{
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setFrame:CGRectMake(0, 0, 32, 32)];
+    [leftBtn setImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
+//    [leftBtn setImage:[[UIImage imageNamed:imageName] rt_tintedImageWithColor:kMenuHilightColor] forState:UIControlStateHighlighted];
+    
+    if(![SysUtil emptyString:backImageName])
+    {
+        [leftBtn addTarget:self action:@selector(backToPre) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    [space setWidth:-5];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    [leftItem setTintColor:[UIColor whiteColor]];
+    self.navigationItem.leftBarButtonItems = @[space, leftItem];
+}
+
+- (void) hideBackButton
+{
+    [self initBackButton:@""];
+}
 @end
