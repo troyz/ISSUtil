@@ -86,6 +86,7 @@ TODO: Add long description of the pod here.
   s.subspec 'ViewControllers' do |ss|
     ss.source_files = 'ISSUtil/Classes/ViewControllers/*.{h,m}'
     ss.public_header_files = 'ISSUtil/Classes/ViewControllers/*.h'
+    ss.dependency 'ISSUtil/Utils/Network'
   end
   # s.resource_bundles = {
   #   'ISSUtil' => ['ISSUtil/Assets/*.png']
