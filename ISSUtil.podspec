@@ -87,6 +87,7 @@ TODO: Add long description of the pod here.
     ss.source_files = 'ISSUtil/Classes/ViewControllers/*.{h,m}'
     ss.public_header_files = 'ISSUtil/Classes/ViewControllers/*.h'
     ss.dependency 'ISSUtil/Utils/Network'
+    ss.dependency 'ISSUtil/Views/Image'
   end
   # s.resource_bundles = {
   #   'ISSUtil' => ['ISSUtil/Assets/*.png']
