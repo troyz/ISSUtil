@@ -11,6 +11,7 @@
 #import "NJKWebViewProgress.h"
 #import "ISSConstant.h"
 #import "SysUtil.h"
+#import "UIViewController+ISSViewController.h"
 
 @interface ISSWebViewController ()<UIWebViewDelegate, NJKWebViewProgressDelegate>
 {
@@ -31,7 +32,8 @@
     [self.view addSubview:statusBarView];
     
     // Do any additional setup after loading the view.
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, kOffSet, kScreenWidth, kScreenHeight - kOffSet - (_showToolbar ? kTabbarHeight : 0))];
+    CGFloat offsetY = [self isHideNavigationBar] ? 0 : kOffSet;
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, offsetY, kScreenWidth, kScreenHeight - offsetY - (_showToolbar ? kTabbarHeight : 0))];
     webView.scrollView.bounces = NO;
     webView.dataDetectorTypes = UIDataDetectorTypeLink;
     [self.view addSubview:webView];

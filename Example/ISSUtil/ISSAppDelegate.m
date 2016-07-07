@@ -36,7 +36,7 @@
 - (void)buttonTapped
 {
     UINavigationController *navController = self.window.rootViewController;
-    ISSWebViewController *vc = [[ISSWebViewController alloc] init];
+    ISSWebViewController *vc = [[ISSWebViewController alloc] initWithHideNavgationBar:YES];
     vc.url = @"http://www.baidu.com/";
     [vc initBackButton];
     [navController pushViewController:vc animated:YES];
