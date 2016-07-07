@@ -10,6 +10,7 @@
 #import "NJKWebViewProgressView.h"
 #import "NJKWebViewProgress.h"
 #import "ISSConstant.h"
+#import "SysUtil.h"
 
 @interface ISSWebViewController ()<UIWebViewDelegate, NJKWebViewProgressDelegate>
 {
@@ -45,7 +46,7 @@
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
     CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
     progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
-    progressView.progressBarView.backgroundColor = kColor_Pager;
+    progressView.progressBarView.backgroundColor = [UIColor blueColor];
     progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [progressView setProgress:0 animated:NO];
     

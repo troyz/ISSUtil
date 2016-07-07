@@ -13,11 +13,14 @@
 #import "UINavigationController+Style.h"
 #import "ISSConstant.h"
 #import "SysUtil.h"
+#import "MBProgressHUD.h"
+#import "UITool.h"
 
 #define HUB_VIEW_TAG            -10
 
 static char disableSwipBackKey;
 static char viewInPagerKey;
+static char hideNavBarKey;
 
 @implementation UIViewController (ISSViewController)
 + (void)load
@@ -39,6 +42,8 @@ static char viewInPagerKey;
 - (void)swizzling_viewWillAppear:(BOOL)animated
 {
     [self swizzling_viewWillAppear:animated];
+    // 这里处理后，从有bar的VC到无bar的VC不会那么突兀。
+    [self.navigationController setNavigationBarHidden:[self isHideNavigationBar] animated:animated];
 }
 
 - (void)swizzling_viewDidAppear:(BOOL)animated
@@ -46,6 +51,16 @@ static char viewInPagerKey;
     [self swizzling_viewDidAppear:animated];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
+}
+
+- (instancetype)initWithHideNavgationBar:(BOOL)_hideNavigationBar
+{
+    self = [super init];
+    if(self)
+    {
+        [self setHideNavigationBar:_hideNavigationBar];
+    }
+    return self;
 }
 
 - (void) startLoading
@@ -203,7 +218,7 @@ static char viewInPagerKey;
     if (nullDataView == nil)
     {
         nullDataView = [[UIView alloc] init];
-        CGSize labelSize = [UITool sizeWithText:([SysUtil emptyString:title] ? @"空空如也,点击刷新" : title) withMaxSize:CGSizeMake(MAXFLOAT, MAXFLOAT) withFont:kDefaultFont lineBreakMode:NSLineBreakByTruncatingTail];
+        CGSize labelSize = [UITool sizeWithText:([SysUtil emptyString:title] ? @"空空如也,点击刷新" : title) withMaxSize:CGSizeMake(MAXFLOAT, MAXFLOAT) withFont:[UIFont systemFontOfSize:14] lineBreakMode:NSLineBreakByTruncatingTail];
         CGFloat width = (labelSize.width > 80 ? labelSize.width : 80);
         CGRect viewFrame = CGRectMake((self.view.frame.size.width - width) / 2.0, (self.view.frame.size.height - 120) / 2.0, width, 120);
         nullDataView.frame = viewFrame;
@@ -221,8 +236,8 @@ static char viewInPagerKey;
         [nullDataView addSubview:img];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, img.frame.origin.y + 80, nullDataView.frame.size.width, 40)];
-        [label setBackgroundColor:kClearColor];
-        [label setFont:kDefaultFont];
+        [label setBackgroundColor:[UIColor clearColor]];
+        [label setFont:[UIFont systemFontOfSize:14]];
         label.textColor = RGBColor(0xe8, 0xe8, 0xe8);
         label.textAlignment = NSTextAlignmentCenter;
         if (title.length>0) {
@@ -336,5 +351,16 @@ static char viewInPagerKey;
 - (void) showHubMsg:(NSString *)msg
 {
     [self showHUBMsgTitle:nil detail:msg afterDelay:2.0];
+}
+
+- (void)setHideNavigationBar:(BOOL)hideNavigationBar
+{
+    objc_setAssociatedObject(self, &hideNavBarKey, [NSString stringWithFormat:@"%zd", hideNavigationBar], OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (BOOL)isHideNavigationBar
+{
+    NSString *str = objc_getAssociatedObject(self, &hideNavBarKey);
+    return ![SysUtil emptyString:str] && [str integerValue];
 }
 @end
