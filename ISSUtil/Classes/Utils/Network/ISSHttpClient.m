@@ -11,6 +11,7 @@
 #import "NSDate+ISSTransform.h"
 #import "NSString+Addtions.h"
 #import "SysUtil.h"
+#import "AFNetworking.h"
 
 @implementation ISSHttpClient
 {

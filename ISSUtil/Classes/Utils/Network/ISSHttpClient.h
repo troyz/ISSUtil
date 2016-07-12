@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFNetworking.h"
+
+@class AFHTTPRequestSerializer;
 
 typedef NS_ENUM(NSInteger, ISSHttpError)
 {
