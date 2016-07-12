@@ -35,7 +35,7 @@
 
 - (void)setRequestInjection:(ISSHttpRequestInjectionBlock)reqInjectBlock
 {
-    requestInjectBlock = reqInjectBlock;
+    requestInjectBlock = [reqInjectBlock copy];
 }
 
 - (NSURLSessionDataTask *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block
