@@ -52,7 +52,6 @@ TODO: Add long description of the pod here.
       sss.dependency 'ISSUtil/Utils/Date'
       sss.dependency 'ISSUtil/Utils/String'
       sss.dependency 'ISSUtil/Utils/Sys'
-      sss.dependency 'AFNetworking', '~> 3.1.0'
     end
   end
   s.subspec 'Views' do |ss|
