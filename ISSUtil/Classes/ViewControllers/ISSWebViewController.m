@@ -15,14 +15,14 @@
 
 @interface ISSWebViewController ()<UIWebViewDelegate, NJKWebViewProgressDelegate>
 {
-    UIWebView *webView;
+//    UIWebView *webView;
     NJKWebViewProgressView *progressView;
     NJKWebViewProgress *progressProxy;
 }
 @end
 
 @implementation ISSWebViewController
-
+@synthesize webView;
 - (void)viewDidLoad
 {
     [super viewDidLoad];

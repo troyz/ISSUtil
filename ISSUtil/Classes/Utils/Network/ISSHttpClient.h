@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 
 typedef NS_ENUM(NSInteger, ISSHttpError)
 {
@@ -23,6 +24,8 @@ typedef void (^ISSHttpResponseBlock)(ISSHttpError errorCode, NSString *responseT
 typedef void (^ISSHttpDataResponseBlock)(ISSHttpError errorCode, NSData *data);
 // 发送请求参数之前，你可以修改参数，dict中的key/value都是string
 typedef void (^ISSHttpParameterWrapperBlock)(NSMutableDictionary *dict);
+// 发送请求前可以操作request，比如给request设置HTTP Header
+typedef void (^ISSHttpRequestInjectionBlock)(AFHTTPRequestSerializer *request, NSString *url);
 
 @protocol ISSHttpStreamFormModel <NSObject>
 @end
@@ -46,6 +49,7 @@ typedef void (^ISSHttpParameterWrapperBlock)(NSMutableDictionary *dict);
 + (ISSHttpClient *)sharedInstance;
 
 - (void)setParameterWrapper:(ISSHttpParameterWrapperBlock)wrapperBlock;
+- (void)setRequestInjection:(ISSHttpRequestInjectionBlock)reqInjectBlock;
 
 - (NSURLSessionDataTask *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block;
 - (NSURLSessionDataTask *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block;

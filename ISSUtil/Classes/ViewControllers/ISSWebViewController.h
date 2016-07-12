@@ -11,5 +11,6 @@
 @interface ISSWebViewController : UIViewController
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, assign) BOOL showToolbar;
+@property (nonatomic, strong, readonly) UIWebView *webView;
 - (void)reloadWebPage;
 @end

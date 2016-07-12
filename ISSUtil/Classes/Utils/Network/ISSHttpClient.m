@@ -7,7 +7,6 @@
 //
 
 #import "ISSHttpClient.h"
-#import "AFNetworking.h"
 #import "JSONModel.h"
 #import "NSDate+ISSTransform.h"
 #import "NSString+Addtions.h"
@@ -16,6 +15,7 @@
 @implementation ISSHttpClient
 {
     ISSHttpParameterWrapperBlock paramWrapperBlock;
+    ISSHttpRequestInjectionBlock requestInjectBlock;
 }
 
 + (ISSHttpClient *)sharedInstance
@@ -31,6 +31,11 @@
 - (void)setParameterWrapper:(ISSHttpParameterWrapperBlock)wrapperBlock
 {
     paramWrapperBlock = [wrapperBlock copy];
+}
+
+- (void)setRequestInjection:(ISSHttpRequestInjectionBlock)reqInjectBlock
+{
+    requestInjectBlock = reqInjectBlock;
 }
 
 - (NSURLSessionDataTask *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block
@@ -187,7 +192,10 @@
             }
         }
     };
-    
+    if(requestInjectBlock)
+    {
+        requestInjectBlock(manager.requestSerializer, url);
+    }
     if(streamList && streamList.count > 0)
     {
         return [manager POST:url parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {

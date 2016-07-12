@@ -35,11 +35,18 @@
 
 - (void)buttonTapped
 {
-    UINavigationController *navController = self.window.rootViewController;
-    ISSWebViewController *vc = [[ISSWebViewController alloc] initWithHideNavgationBar:YES];
-    vc.url = @"http://www.baidu.com/";
-    [vc initBackButton];
-    [navController pushViewController:vc animated:YES];
+//    UINavigationController *navController = self.window.rootViewController;
+//    ISSWebViewController *vc = [[ISSWebViewController alloc] initWithHideNavgationBar:YES];
+//    vc.url = @"http://www.baidu.com/";
+//    [vc initBackButton];
+//    [navController pushViewController:vc animated:YES];
+    
+    NSDictionary *dict = @{@"cityname": @"武汉"};
+    NSString *url = @"http://apis.baidu.com/apistore/weatherservice/cityname";
+//    [[ISSHttpClient sharedInstance] setRequestInjection:];
+    [[ISSHttpClient sharedInstance] postData:url withKVDict:dict withBlock:^(ISSHttpError errorCode, NSData *data) {
+        
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
