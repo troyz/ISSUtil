@@ -194,7 +194,7 @@
     };
     if(requestInjectBlock)
     {
-        requestInjectBlock(manager.requestSerializer, url);
+        requestInjectBlock(manager.requestSerializer, url, dict);
     }
     if(streamList && streamList.count > 0)
     {

@@ -25,7 +25,7 @@ typedef void (^ISSHttpDataResponseBlock)(ISSHttpError errorCode, NSData *data);
 // 发送请求参数之前，你可以修改参数，dict中的key/value都是string
 typedef void (^ISSHttpParameterWrapperBlock)(NSMutableDictionary *dict);
 // 发送请求前可以操作request，比如给request设置HTTP Header
-typedef void (^ISSHttpRequestInjectionBlock)(AFHTTPRequestSerializer *request, NSString *url);
+typedef void (^ISSHttpRequestInjectionBlock)(AFHTTPRequestSerializer *request, NSString *url, NSDictionary *dict);
 
 @protocol ISSHttpStreamFormModel <NSObject>
 @end

@@ -42,10 +42,16 @@
 //    [navController pushViewController:vc animated:YES];
     
     NSDictionary *dict = @{@"cityname": @"武汉"};
-    NSString *url = @"http://apis.baidu.com/apistore/weatherservice/cityname";
-//    [[ISSHttpClient sharedInstance] setRequestInjection:];
-    [[ISSHttpClient sharedInstance] postData:url withKVDict:dict withBlock:^(ISSHttpError errorCode, NSData *data) {
-        
+    NSString *theurl = @"http://apis.baidu.com/apistore/weatherservice/cityname";
+    [[ISSHttpClient sharedInstance] setRequestInjection:^(AFHTTPRequestSerializer *request, NSString *url, NSDictionary *dict) {
+        if([url isEqualToString:theurl])
+        {
+            [request setValue:@"e0f995d5d2e6d61784c144683b7ff96c" forHTTPHeaderField:@"apikey"];
+        }
+    }];
+    [[ISSHttpClient sharedInstance] getJSON:theurl withKVDict:dict withBlock:^(ISSHttpError errorCode, id jsonData) {
+        NSLog(@"type, %@", [jsonData class]);
+        NSLog(@"jsonData %@", jsonData);
     }];
 }
 
