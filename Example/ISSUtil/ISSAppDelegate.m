@@ -8,6 +8,7 @@
 
 #import "ISSAppDelegate.h"
 #import "ISSUtil.h"
+#import "AFNetworking.h"
 
 @implementation ISSAppDelegate
 

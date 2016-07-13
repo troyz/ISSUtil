@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, HUBAferDelay)
 - (void) removePopGuesture;
 - (void)setViewInPager:(BOOL)viewInPager;
 - (BOOL)isViewInPager;
+- (BOOL)isRootViewController;
 - (void) isDataNullTarget:(id)target action:(SEL)action;
 - (void) isDataNullTarget:(id)target action:(SEL)action title:(NSString*)title;
 - (void) isDataNotNull;
