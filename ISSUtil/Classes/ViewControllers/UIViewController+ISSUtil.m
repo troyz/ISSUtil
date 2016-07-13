@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 isoftstone. All rights reserved.
 //
 
-#import "UIViewController+ISSViewController.h"
+#import "UIViewController+ISSUtil.h"
 #import "objc/runtime.h"
 #import "UIImage+RTTint.h"
 #import "ISSWebViewController.h"

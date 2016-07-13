@@ -28,6 +28,7 @@
 #import "ISSNullTableViewCell.h"
 #import "ISSWebViewController.h"
 #import "UINavigationController+Style.h"
-#import "UIViewController+ISSViewController.h"
+#import "UIViewController+ISSUtil.h"
+#import "FileUtil.h"
 
 #endif /* ISSUtil_h */

@@ -11,7 +11,7 @@
 #import "NJKWebViewProgress.h"
 #import "ISSConstant.h"
 #import "SysUtil.h"
-#import "UIViewController+ISSViewController.h"
+#import "UIViewController+ISSUtil.h"
 
 @interface ISSWebViewController ()<UIWebViewDelegate, NJKWebViewProgressDelegate>
 {
