@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, HUBAferDelay)
     HUBAferDelay1 = 1
 };
 
-@interface UIViewController (ISSViewController)<UIGestureRecognizerDelegate>
+@interface UIViewController (ISSUtil)<UIGestureRecognizerDelegate>
 - (instancetype)initWithHideNavgationBar:(BOOL)hideNavigationBar;
 - (BOOL)isHideNavigationBar;
 - (void) startLoading;

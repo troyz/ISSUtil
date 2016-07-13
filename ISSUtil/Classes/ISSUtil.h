@@ -8,6 +8,7 @@
 
 #ifndef ISSUtil_h
 #define ISSUtil_h
+#import "AFNetworking.h"
 #import "SysUtil.h"
 #import "UITool.h"
 #import "NSString+URL.h"

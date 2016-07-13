@@ -22,7 +22,7 @@ static char disableSwipBackKey;
 static char viewInPagerKey;
 static char hideNavBarKey;
 
-@implementation UIViewController (ISSViewController)
+@implementation UIViewController (ISSUtil)
 + (void)load
 {
     static dispatch_once_t onceToken;
