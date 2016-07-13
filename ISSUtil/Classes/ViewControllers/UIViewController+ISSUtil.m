@@ -23,36 +23,6 @@ static char viewInPagerKey;
 static char hideNavBarKey;
 
 @implementation UIViewController (ISSUtil)
-+ (void)load
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        {
-            Method originMethod = class_getInstanceMethod([self class], @selector(viewDidAppear:));
-            Method swizzledMethod = class_getInstanceMethod([self class], @selector(swizzling_viewDidAppear:));
-            method_exchangeImplementations(originMethod, swizzledMethod);
-            
-            originMethod = class_getInstanceMethod([self class], @selector(viewWillAppear:));
-            swizzledMethod = class_getInstanceMethod([self class], @selector(swizzling_viewWillAppear:));
-            method_exchangeImplementations(originMethod, swizzledMethod);
-        }
-    });
-}
-
-- (void)swizzling_viewWillAppear:(BOOL)animated
-{
-    [self swizzling_viewWillAppear:animated];
-    // 这里处理后，从有bar的VC到无bar的VC不会那么突兀。
-    [self.navigationController setNavigationBarHidden:[self isHideNavigationBar] animated:animated];
-}
-
-- (void)swizzling_viewDidAppear:(BOOL)animated
-{
-    [self swizzling_viewDidAppear:animated];
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-}
-
 - (instancetype)initWithHideNavgationBar:(BOOL)_hideNavigationBar
 {
     self = [super init];
