@@ -147,7 +147,7 @@ static char hideNavBarKey;
 
 - (void)addFirstView
 {
-    [self.view addSubview:[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)]];
+    [self.view addSubview:[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)]];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
