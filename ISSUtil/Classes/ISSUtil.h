@@ -30,5 +30,6 @@
 #import "UINavigationController+Style.h"
 #import "UIViewController+ISSUtil.h"
 #import "FileUtil.h"
+#import "ISSJSONModel.h"
 
 #endif /* ISSUtil_h */
