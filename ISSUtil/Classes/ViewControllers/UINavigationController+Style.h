@@ -10,4 +10,6 @@
 
 @interface UINavigationController (Style)
 - (void)setupStyleWithBarColor:(UIColor *)barColor;
+- (void)setupStyleWithBarColor:(UIColor *)barColor withBarStyle:(UIStatusBarStyle) barStyle;
+
 @end
