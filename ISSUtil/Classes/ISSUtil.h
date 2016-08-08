@@ -24,6 +24,7 @@
 #import "UIImage+Blurry.h"
 #import "UIImage+fixOrientation.h"
 #import "UIImage+RTTint.h"
+#import "UIImage+RoundedCorner.h"
 #import "UIImageView+Title.h"
 #import "ISSNullTableViewCell.h"
 #import "ISSWebViewController.h"

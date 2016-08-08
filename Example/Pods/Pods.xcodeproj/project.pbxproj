@@ -62,6 +62,8 @@
 		5FF6453E55785669885F626B853FD2AA /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A72023A4A60719E05ED1B1A2ED0A2611 /* UIProgressView+AFNetworking.m */; };
 		60E3009342BEE96D32C546BE2DB60052 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 15F5819511D5353BE9B0E0D34748A058 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		659960F7E28E993E08CCC1E8A383E710 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 81D0207A6676A55DF8A4C695EC874A7E /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DBB93C1D5816EF00D87F69 /* UIImage+RoundedCorner.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DBB93A1D5816EF00D87F69 /* UIImage+RoundedCorner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DBB93D1D5816EF00D87F69 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DBB93B1D5816EF00D87F69 /* UIImage+RoundedCorner.m */; };
 		668628A6E1B876F3938C501F8A7A382A /* Pods-ISSUtil_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B3372FC0DC519A41101898ECDFEBCECD /* Pods-ISSUtil_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66AE5CD4D30FE378C770713411C59A43 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B41C41EC517E0D7482116EA9E7D45 /* NSArray+JSONModel.m */; };
 		68152D921ABF6A423C192C04FDF94F0F /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F10346505F42F2F1AB2AF597B76B6CF9 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -280,6 +282,8 @@
 		60F4CF87C99C11318ADA7345CF80E621 /* JSONModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONModel.m; path = JSONModel/JSONModel/JSONModel.m; sourceTree = "<group>"; };
 		652BF92F07FA4A5A83B16B6AFBE0E4B4 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
 		65CBD1580F4AAF0592B5B88BD7B10F2F /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		65DBB93A1D5816EF00D87F69 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		65DBB93B1D5816EF00D87F69 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		68413567AD2C2BBB7532173861FE735A /* SysUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SysUtil.h; sourceTree = "<group>"; };
 		69483855BE0F5A6ABE9949DEE37123D8 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+JSONModel.h"; path = "JSONModel/JSONModelCategories/NSArray+JSONModel.h"; sourceTree = "<group>"; };
 		6A157CA68A2E8FE95F3C709739964987 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
@@ -785,6 +789,8 @@
 				0DF61D37C8EE74D90CD79254BB1F01DE /* UIImage+fixOrientation.m */,
 				1F6EE208FF3F8292C5C23D17B71C8A9C /* UIImage+RTTint.h */,
 				0EC7509C414A25BE4715CD692FEDCAB4 /* UIImage+RTTint.m */,
+				65DBB93A1D5816EF00D87F69 /* UIImage+RoundedCorner.h */,
+				65DBB93B1D5816EF00D87F69 /* UIImage+RoundedCorner.m */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -1315,6 +1321,7 @@
 				4A93E02863FC539A6E71BD40EEB6C9E5 /* FileUtil.h in Headers */,
 				1C6AF259CC190F9C19DA672D7EF4BF20 /* ISSConstant.h in Headers */,
 				FA7F07AD6E9937C58384E135205D02F2 /* ISSHttpClient.h in Headers */,
+				65DBB93C1D5816EF00D87F69 /* UIImage+RoundedCorner.h in Headers */,
 				DD217BA862864A7F5D08EC7101A46D33 /* ISSJSONModel.h in Headers */,
 				1F2F1F16A8821F1F65CD44A4713EF945 /* ISSNullTableViewCell.h in Headers */,
 				9B26E618190ADF5FEBF1EEB652488CBF /* ISSUtil-umbrella.h in Headers */,
@@ -1668,6 +1675,7 @@
 				BF6E5E8F8000F8D19CCC01082CB8C04C /* NSMutableAttributedString+HTML.m in Sources */,
 				6D3499B34FDA07FA57B4D560E15C9F96 /* NSString+Addtions.m in Sources */,
 				FE61E2ECB7F5A79BE17DAC197A099F3D /* NSString+Extension.m in Sources */,
+				65DBB93D1D5816EF00D87F69 /* UIImage+RoundedCorner.m in Sources */,
 				BCA145DF35C653101D09B269308979C6 /* NSString+ISSReplace.m in Sources */,
 				89352247FB0C178D67F494E103E7F8AC /* NSString+URL.m in Sources */,
 				36A556F58990CA6FF228B33866F42445 /* SysUtil.m in Sources */,
