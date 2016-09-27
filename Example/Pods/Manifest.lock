@@ -14,35 +14,35 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - ISSUtil (0.1.0):
+  - ISSUtil (0.1.1):
     - AFNetworking (~> 3.1.0)
-    - ISSUtil/Models (= 0.1.0)
-    - ISSUtil/Utils (= 0.1.0)
-    - ISSUtil/ViewControllers (= 0.1.0)
-    - ISSUtil/Views (= 0.1.0)
+    - ISSUtil/Models (= 0.1.1)
+    - ISSUtil/Utils (= 0.1.1)
+    - ISSUtil/ViewControllers (= 0.1.1)
+    - ISSUtil/Views (= 0.1.1)
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Models (0.1.0):
-    - AFNetworking (~> 3.1.0)
-    - JSONModel (~> 1.2.0)
-    - MBProgressHUD (~> 0.9.2)
-    - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Utils (0.1.0):
-    - AFNetworking (~> 3.1.0)
-    - ISSUtil/Utils/Date (= 0.1.0)
-    - ISSUtil/Utils/Network (= 0.1.0)
-    - ISSUtil/Utils/String (= 0.1.0)
-    - ISSUtil/Utils/Sys (= 0.1.0)
-    - JSONModel (~> 1.2.0)
-    - MBProgressHUD (~> 0.9.2)
-    - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Utils/Date (0.1.0):
+  - ISSUtil/Models (0.1.1):
     - AFNetworking (~> 3.1.0)
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Utils/Network (0.1.0):
+  - ISSUtil/Utils (0.1.1):
+    - AFNetworking (~> 3.1.0)
+    - ISSUtil/Utils/Date (= 0.1.1)
+    - ISSUtil/Utils/Network (= 0.1.1)
+    - ISSUtil/Utils/String (= 0.1.1)
+    - ISSUtil/Utils/Sys (= 0.1.1)
+    - JSONModel (~> 1.2.0)
+    - MBProgressHUD (~> 0.9.2)
+    - NJKWebViewProgress (~> 0.2.3)
+  - ISSUtil/Utils/Date (0.1.1):
+    - AFNetworking (~> 3.1.0)
+    - JSONModel (~> 1.2.0)
+    - MBProgressHUD (~> 0.9.2)
+    - NJKWebViewProgress (~> 0.2.3)
+  - ISSUtil/Utils/Network (0.1.1):
     - AFNetworking (~> 3.1.0)
     - ISSUtil/Utils/Date
     - ISSUtil/Utils/String
@@ -50,56 +50,56 @@ PODS:
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Utils/String (0.1.0):
+  - ISSUtil/Utils/String (0.1.1):
     - AFNetworking (~> 3.1.0)
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Utils/Sys (0.1.0):
+  - ISSUtil/Utils/Sys (0.1.1):
     - AFNetworking (~> 3.1.0)
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/ViewControllers (0.1.0):
+  - ISSUtil/ViewControllers (0.1.1):
     - AFNetworking (~> 3.1.0)
     - ISSUtil/Utils/Network
     - ISSUtil/Views/Image
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Views (0.1.0):
+  - ISSUtil/Views (0.1.1):
     - AFNetworking (~> 3.1.0)
-    - ISSUtil/Views/Button (= 0.1.0)
-    - ISSUtil/Views/Cells (= 0.1.0)
-    - ISSUtil/Views/Image (= 0.1.0)
-    - ISSUtil/Views/ImageView (= 0.1.0)
-    - ISSUtil/Views/Input (= 0.1.0)
+    - ISSUtil/Views/Button (= 0.1.1)
+    - ISSUtil/Views/Cells (= 0.1.1)
+    - ISSUtil/Views/Image (= 0.1.1)
+    - ISSUtil/Views/ImageView (= 0.1.1)
+    - ISSUtil/Views/Input (= 0.1.1)
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Views/Button (0.1.0):
-    - AFNetworking (~> 3.1.0)
-    - ISSUtil/Utils/Sys
-    - JSONModel (~> 1.2.0)
-    - MBProgressHUD (~> 0.9.2)
-    - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Views/Cells (0.1.0):
-    - AFNetworking (~> 3.1.0)
-    - JSONModel (~> 1.2.0)
-    - MBProgressHUD (~> 0.9.2)
-    - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Views/Image (0.1.0):
-    - AFNetworking (~> 3.1.0)
-    - JSONModel (~> 1.2.0)
-    - MBProgressHUD (~> 0.9.2)
-    - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Views/ImageView (0.1.0):
+  - ISSUtil/Views/Button (0.1.1):
     - AFNetworking (~> 3.1.0)
     - ISSUtil/Utils/Sys
     - JSONModel (~> 1.2.0)
     - MBProgressHUD (~> 0.9.2)
     - NJKWebViewProgress (~> 0.2.3)
-  - ISSUtil/Views/Input (0.1.0):
+  - ISSUtil/Views/Cells (0.1.1):
+    - AFNetworking (~> 3.1.0)
+    - JSONModel (~> 1.2.0)
+    - MBProgressHUD (~> 0.9.2)
+    - NJKWebViewProgress (~> 0.2.3)
+  - ISSUtil/Views/Image (0.1.1):
+    - AFNetworking (~> 3.1.0)
+    - JSONModel (~> 1.2.0)
+    - MBProgressHUD (~> 0.9.2)
+    - NJKWebViewProgress (~> 0.2.3)
+  - ISSUtil/Views/ImageView (0.1.1):
+    - AFNetworking (~> 3.1.0)
+    - ISSUtil/Utils/Sys
+    - JSONModel (~> 1.2.0)
+    - MBProgressHUD (~> 0.9.2)
+    - NJKWebViewProgress (~> 0.2.3)
+  - ISSUtil/Views/Input (0.1.1):
     - AFNetworking (~> 3.1.0)
     - ISSUtil/Utils/Sys
     - JSONModel (~> 1.2.0)
@@ -118,15 +118,15 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   ISSUtil:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  ISSUtil: b30beab343e84beb623cf27b87a7b7e32029ff99
+  ISSUtil: 4ff4b13918e77d8fd36517a3030e4cf1cdceef47
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
 
 PODFILE CHECKSUM: f9380c1bae050dd7c1f139aa7fa9e83511659bf2
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

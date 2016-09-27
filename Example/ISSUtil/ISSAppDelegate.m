@@ -50,9 +50,20 @@
             [request setValue:@"e0f995d5d2e6d61784c144683b7ff96c" forHTTPHeaderField:@"apikey"];
         }
     }];
+    
+    [[ISSHttpClient sharedInstance] setFailureCallback:^(NSURLSessionDataTask *task, NSError *error){
+        NSLog(@"error: %@", error);
+    }];
+    
     [[ISSHttpClient sharedInstance] getJSON:theurl withKVDict:dict withBlock:^(ISSHttpError errorCode, id jsonData) {
         NSLog(@"type, %@", [jsonData class]);
         NSLog(@"jsonData %@", jsonData);
+    }];
+    
+    NSString *url = @"http://www.anshunvisit.cn/datacent/external/execute.jhtml?system=CT&serviceName=DC_USERCENTER&serviceKey=rYzcn1iQWiCz9pCtJ68Eng==";
+    dict = @{@"content": @{@"type": @(10), @"user": @{@"PhoneNumber": @"18080079668", @"Pwd": @"111111"}}};
+    [[ISSHttpClient sharedInstance] postText:url withKVDict:nil withJsonDict:dict withBlock:^(ISSHttpError errorCode, NSString *responseText) {
+        NSLog(@"response: %@", responseText);
     }];
 }
 

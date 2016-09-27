@@ -17,6 +17,7 @@
 {
     ISSHttpParameterWrapperBlock paramWrapperBlock;
     ISSHttpRequestInjectionBlock requestInjectBlock;
+    ISSHttpRequestFailureBlock requestFailureBlock;
 }
 
 + (ISSHttpClient *)sharedInstance
@@ -37,6 +38,11 @@
 - (void)setRequestInjection:(ISSHttpRequestInjectionBlock)reqInjectBlock
 {
     requestInjectBlock = [reqInjectBlock copy];
+}
+
+- (void)setFailureCallback:(ISSHttpRequestFailureBlock)failBlock
+{
+    requestFailureBlock = [failBlock copy];
 }
 
 - (NSURLSessionDataTask *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block
@@ -191,6 +197,10 @@
             {
                 dataBlock(errorCode, nil);
             }
+        }
+        if(requestFailureBlock)
+        {
+            requestFailureBlock(task, error);
         }
     };
     if(requestInjectBlock)

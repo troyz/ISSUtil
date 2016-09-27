@@ -27,6 +27,7 @@ typedef void (^ISSHttpDataResponseBlock)(ISSHttpError errorCode, NSData *data);
 typedef void (^ISSHttpParameterWrapperBlock)(NSMutableDictionary *dict);
 // 发送请求前可以操作request，比如给request设置HTTP Header
 typedef void (^ISSHttpRequestInjectionBlock)(AFHTTPRequestSerializer *request, NSString *url, NSDictionary *dict);
+typedef void (^ISSHttpRequestFailureBlock)(NSURLSessionDataTask *task, NSError *error);
 
 @protocol ISSHttpStreamFormModel <NSObject>
 @end
@@ -51,6 +52,7 @@ typedef void (^ISSHttpRequestInjectionBlock)(AFHTTPRequestSerializer *request, N
 
 - (void)setParameterWrapper:(ISSHttpParameterWrapperBlock)wrapperBlock;
 - (void)setRequestInjection:(ISSHttpRequestInjectionBlock)reqInjectBlock;
+- (void)setFailureCallback:(ISSHttpRequestFailureBlock)failureBlock;
 
 - (NSURLSessionDataTask *) getJSON:(NSString *)url withBlock:(ISSHttpJSONResponseBlock)block;
 - (NSURLSessionDataTask *) getText:(NSString *)url withBlock:(ISSHttpResponseBlock)block;

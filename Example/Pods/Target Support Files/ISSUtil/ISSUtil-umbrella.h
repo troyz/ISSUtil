@@ -21,6 +21,7 @@
 #import "ISSNullTableViewCell.h"
 #import "UIImage+Blurry.h"
 #import "UIImage+fixOrientation.h"
+#import "UIImage+RoundedCorner.h"
 #import "UIImage+RTTint.h"
 #import "UIImageView+Title.h"
 #import "UITextField+LengthLimit.h"
